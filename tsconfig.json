@@ -2,14 +2,20 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",
-    "outDir": "build",
+    "outDir": "./build",
+    "declaration": true,
     "sourceMap": true,
     "strictNullChecks": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
   "include": [
-    "./src/**/*.ts",
-    "./test/**/*.ts"
+    "*.ts",
+    "./**/*.ts",
+  ],
+  "exclude": [
+    "./node_modules",
+    "./build",
+    "./test"
   ]
 }

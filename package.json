@@ -1,10 +1,15 @@
 {
   "name": "huygens",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A library to help you simulate nature",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanderlissenburg/huygens.git"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -r ts-node/register --timeout 5000 'test/**/*.test.ts'"
+    "test": "./node_modules/mocha/bin/mocha -r ts-node/register --timeout 5000 'test/**/*.test.ts'",
+    "build": "./node_modules/.bin/tsc"
   },
   "author": "Sander Lissenburg",
   "license": "ISC",
