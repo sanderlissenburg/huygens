@@ -40,11 +40,36 @@ describe('ImmutableVector2D', () => {
         assert.deepEqual(vector.magnitude, 5);
     });
 
+    it('It immutably sets the magnitude ', () => {
+        let vector: ImmutableVector2D = new ImmutableVector2D(3, 4);
+        let vector2 = vector.setMagnitude(10);
+
+        assert.deepEqual(vector, new ImmutableVector2D(3, 4));
+        assert.deepEqual(vector2, new ImmutableVector2D(6, 8));
+    });
+
     it('It immutably normalizes', () => {
         let vector: ImmutableVector2D = new ImmutableVector2D(3, 4);
         vector = vector.normalize();
         vector = vector.multiply(5);
 
         assert.deepEqual(vector, new ImmutableVector2D(3, 4));
+    });
+
+    it('It immutably randomizes for a given max', () => {
+        let vector: ImmutableVector2D = new ImmutableVector2D(1, 2);
+        let vector2: ImmutableVector2D = vector.random(10);
+
+        assert.deepEqual(vector, new ImmutableVector2D(1, 2));
+        assert.isBelow(vector2.x, 10);
+        assert.isBelow(vector2.y, 10);
+    });
+
+    it('It immutably limits the magnitude', () => {
+        let vector: ImmutableVector2D = new ImmutableVector2D(3, 4);
+        let vector2: ImmutableVector2D = vector.limit(4);
+
+        assert.deepEqual(vector.magnitude, 5);
+        assert.deepEqual(vector2.magnitude, 4);
     });
 });
