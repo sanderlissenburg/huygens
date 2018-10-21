@@ -20,6 +20,12 @@ export class Vector2D {
         return Math.sqrt((Math.pow(this.x, 2) + Math.pow(this.y, 2)));
     }
 
+    public setMagnitude(magnitude: number): void
+    {
+        this.normalize();
+        this.multiply(magnitude);
+    }
+
     public add(vector: Vector2D): void
     {
         this._x += vector.x;
@@ -47,5 +53,19 @@ export class Vector2D {
     public normalize(): void
     {
         this.divide(this.magnitude);
+    }
+
+    public random(max: number): void
+    {
+        this._x = Math.random() * max;
+        this._y = Math.random() * max;
+    }
+
+    public limit(limit: number): void
+    {
+        if (this.magnitude > limit) {
+            this.normalize();
+            this.multiply(limit);
+        }
     }
 }

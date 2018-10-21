@@ -20,6 +20,11 @@ export class ImmutableVector2D {
         return Math.sqrt((Math.pow(this.x, 2) + Math.pow(this.y, 2)));
     }
 
+    public setMagnitude(magnitude: number): ImmutableVector2D
+    {
+        return this.normalize().multiply(magnitude);
+    }
+
     public add(vector: ImmutableVector2D): ImmutableVector2D
     {
         let x: number = this.x + vector.x;
@@ -55,5 +60,19 @@ export class ImmutableVector2D {
     public normalize(): ImmutableVector2D
     {
         return this.divide(this.magnitude);
+    }
+
+    public random(max: number = 1): ImmutableVector2D
+    {
+        return new ImmutableVector2D(Math.random() * max, Math.random() * max);
+    }
+
+    limit(limit: number): ImmutableVector2D
+    {
+        if (this.magnitude > limit) {
+            return this.normalize().multiply(limit);
+        }
+
+        return new ImmutableVector2D(this.x, this.y);
     }
 }
