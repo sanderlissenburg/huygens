@@ -67,7 +67,7 @@ export class ImmutableVector2D {
         return new ImmutableVector2D(Math.random() * max, Math.random() * max);
     }
 
-    limit(limit: number): ImmutableVector2D
+    public limit(limit: number): ImmutableVector2D
     {
         if (this.magnitude > limit) {
             return this.normalize().multiply(limit);
