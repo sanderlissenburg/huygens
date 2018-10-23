@@ -1,5 +1,6 @@
 import {Vector2D} from "../src/vector2d";
 import {assert} from "chai";
+import {ImmutableVector2D} from "../src/immutable-vector2d";
 
 describe('Vector2D', () => {
     it('It adds', () => {
@@ -69,5 +70,17 @@ describe('Vector2D', () => {
         vector.limit(4);
 
         assert.equal(vector.magnitude, 4);
-    })
+    });
+
+    it('It can be created from an ImmutableVector2D', () => {
+        let vector = new ImmutableVector2D(1,2);
+
+        assert.deepEqual(Vector2D.fromImmutableVector2D(vector), new Vector2D(1, 2));
+    });
+
+    it('It can be turned into an ImmutableVector2D', () => {
+        let vector = new Vector2D(1, 2);
+
+        assert.deepEqual(vector.toImmutableVector2D(), new ImmutableVector2D(1, 2));
+    });
 });
