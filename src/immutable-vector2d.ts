@@ -1,3 +1,5 @@
+import {Vector2D} from "./vector2d";
+
 export class ImmutableVector2D {
     private _x: number;
     private _y: number;
@@ -74,5 +76,15 @@ export class ImmutableVector2D {
         }
 
         return new ImmutableVector2D(this.x, this.y);
+    }
+
+    public static fromVector2D(vector: Vector2D): ImmutableVector2D
+    {
+        return new ImmutableVector2D(vector.x, vector.y);
+    }
+
+    public toVector2D(): Vector2D
+    {
+        return new Vector2D(this.x, this.y);
     }
 }
